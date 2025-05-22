@@ -28,3 +28,6 @@ elif 0.5 * max_rate <= rate < 0.7 * max_rate:
     print("Aerobic training")
 else:
     print("Couch potato")
+
+## There are a couple other challenges which look fun
+## but i cba for now.
