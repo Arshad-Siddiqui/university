@@ -8,5 +8,7 @@ def BubbleSort(A):
         A[j], A[j+1] = A[j+1], A[j]
   return A
 
+# j iterates through the list backwards
+# Looks like an O(n^2^) time complexity
 print(BubbleSort([3, 2, 7, 5, 6, 3, 1, 7, 4, 8]))
 
