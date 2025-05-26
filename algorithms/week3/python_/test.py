@@ -12,3 +12,18 @@ def BubbleSort(A):
 # Looks like an O(n^2^) time complexity
 print(BubbleSort([3, 2, 7, 5, 6, 3, 1, 7, 4, 8]))
 
+# Optimsid bubble sort
+
+def OptimisedBubbleSort(A):
+  n = len(A)
+  for i in range(n-1):
+    swapped = False
+    for j in range (n-1-i):
+      if A[j] > A[j+1]:
+        A[j], A[j+1] = A[j+1], A[j]
+        swapped = True
+    if not swapped:
+      break
+  return A
+
+print(OptimisedBubbleSort([3, 2, 7, 5, 6, 3, 1, 7, 4, 8]))
