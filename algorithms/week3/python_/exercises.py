@@ -92,3 +92,38 @@ for case in test_cases:
         case["require_digit"]
     )
     assert result == case["expected"], case["message"]
+
+# Exercise 4
+
+def sum_digits(number):
+  number_string = str(number)
+  
+  total = 0
+  for char in number_string:
+    total += int(char)
+  return total
+
+assert sum_digits(1234) == 10, 'sum_digits(1234) didnt produce 10'
+
+# Exercise 5
+
+def pairwise_digits(number_a, number_b):
+  # Where 1 string is longer than the other we leave a trail of 0s
+  difference_in_length = abs(number_a - number_b)
+  tail = '0' * difference_in_length
+
+  binary = ""
+  for i in range(len(number_a)):
+    # just in case a is longer i don't want to access fake indexes in b.
+    if i == len(number_b):
+      break
+    if number_a[i] == number_b[i]:
+      binary += 1
+    else:
+      binary += 0
+  return binary + tail
+
+assert pairwise_digits('1', '0') == '0', 'the digits were different so should return 0'
+assert pairwise_digits('1', '0') == '0', 'the digits were different so should return 0'
+
+## Should come back later
