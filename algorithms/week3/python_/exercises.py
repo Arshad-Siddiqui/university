@@ -109,7 +109,7 @@ assert sum_digits(1234) == 10, 'sum_digits(1234) didnt produce 10'
 
 def pairwise_digits(number_a, number_b):
   # Where 1 string is longer than the other we leave a trail of 0s
-  difference_in_length = abs(number_a - number_b)
+  difference_in_length = abs(len(number_a) - len(number_b))
   tail = '0' * difference_in_length
 
   binary = ""
@@ -118,12 +118,14 @@ def pairwise_digits(number_a, number_b):
     if i == len(number_b):
       break
     if number_a[i] == number_b[i]:
-      binary += 1
+      binary += "1"
     else:
-      binary += 0
+      binary += "0"
   return binary + tail
 
 assert pairwise_digits('1', '0') == '0', 'the digits were different so should return 0'
-assert pairwise_digits('1', '0') == '0', 'the digits were different so should return 0'
-
+assert pairwise_digits('1', '1') == '1', 'the digits are the same so should return 1'
+assert pairwise_digits('4583817', '4901211') == '1000010', 'Should return 1000010'
+assert pairwise_digits('1', '100000') == '100000'
+assert pairwise_digits('1000', '0') == '0000'
 ## Should come back later
