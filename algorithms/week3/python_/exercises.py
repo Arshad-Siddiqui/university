@@ -128,4 +128,13 @@ assert pairwise_digits('1', '1') == '1', 'the digits are the same so should retu
 assert pairwise_digits('4583817', '4901211') == '1000010', 'Should return 1000010'
 assert pairwise_digits('1', '100000') == '100000'
 assert pairwise_digits('1000', '0') == '0000'
-## Should come back later
+
+def count_pairs(array):
+  count = 0
+  for i in range(0, len(array) - 1): # -1 because range did a -1 for us so together -2
+    # We're skipping the last element because we need j to be larger. and that's impossible when i is final index.
+    for j in range(i+1, len(array)):
+      # i+1 here ensures j is always larger.
+      if array(i) == array(j):
+        count += 1
+  return count
