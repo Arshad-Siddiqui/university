@@ -5,34 +5,37 @@ import math
 class Vector:
   def __init__(self, data):
     """Stores a shallow copy of the list passed in parameters: data -> a list of floats"""
-    self.data = copy.copy(data)
+    self._vector = copy.copy(data)
 
 # Exercise 2
   def __str__(self):
-    return str(self.data).replace('[', '<').replace(']', '>')
+    return str(self._vector).replace('[', '<').replace(']', '>')
   
 # Exercise 3
   def dim(self):
-    return len(self.data)
+    return len(self._vector)
   
 # Exercise 4
   def get(self, index):
-    return self.data[index]
+    return self._vector[index]
   
   def set(self, index, value):
-    self.data[index] = value
+    self._vector[index] = value
 
 # Exercise 5
 
   def scalar_product(self, number):
     multiplied = []
-    for element in self.data:
+    for element in self._vector:
       multiplied.append(element * number)
 
     return Vector(multiplied)
     
 # Exercise 6
 
+  def add(self, other):
+    self + other
+    
   def __add__(self, other):
     if not isinstance(other, Vector):
       return None
@@ -41,7 +44,7 @@ class Vector:
     # Guard clauses above checking if we're adding another vector and they're the same dimension
     added = []
     for i in range(self.dim()):
-      added.append(self.data[i] + other.data[i])
+      added.append(self._vector[i] + other._vector[i])
     return Vector(added)
   
 # Exercise 7
