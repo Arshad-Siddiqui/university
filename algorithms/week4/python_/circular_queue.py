@@ -12,14 +12,15 @@ class CircularQueue:
         return self.size == 0
     
     def enqueue(self, data):
-        new = Node(data, None)
+        new_node = Node(data, None)
         if self.is_empty():
-            self.tail = new
-            self.tail.next = self.tail # type: ignore
+            new_node.next = new_node # type: ignore
         else:
-            head = self.tail.next # type: ignore
-            new.next = head
-            self.tail.next = new # type: ignore
-            self.tail = new
-
+            new_node.next = self.tail.next # type: ignore
+            self.tail.next = new_node # type: ignore
+        self.tail = new_node
         self.size += 1
+    
+    def rotate(self):
+        if not self.is_empty():
+            self.tail = self.tail.next # type: ignore
