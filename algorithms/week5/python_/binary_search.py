@@ -1,18 +1,17 @@
 # Recursive Binary Search
+# NOTE: Using slices for recursion is inefficient as you're better off just setting low and high
+def binary_search(data, target) -> bool:
+    if len(data) <= 1:
+        return data == target
 
-def binary_search(data, target, low, high) -> bool:
-    """Returns true if target is contained in data. Low and high mark which part of the data to check"""
-    if low > high:
-        return False
-
-    mid = int((low + high)/2)
+    mid = int((len(data) - 1) / 2)
 
     if target == data[mid]:
         return True
     if data[mid] > target:
-        return binary_search(data, target, low, mid)
+        return binary_search(data[:mid], target)
     else:
-        return binary_search(data, target, mid, high)
+        return binary_search(data[mid+1:], target)
 
-# print(binary_search([2, 8, 12, 18], 12, 0, 3))
-print(binary_search([2, 8, 12, 18], 11, 0, 3))
+print(binary_search([2, 8, 12, 18], 12))
+print(binary_search([2, 8, 12, 18], 11))
