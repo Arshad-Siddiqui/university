@@ -16,21 +16,22 @@ def binary_search_slice(data, target) -> bool:
 print(binary_search_slice([2, 8, 12, 18], 12))
 print(binary_search_slice([2, 8, 12, 18], 11))
 
+# Admittedly I couldn't make a working version so i had to GPT this thing
 def binary_search(data, target, low=0, high=None):
-    if high == None:
-        high = len(data)
+    if high is None:
+        high = len(data) - 1
 
     if low > high:
         return False
-    
-    mid = int((low + high) / 2)
+
+    mid = (low + high) // 2
 
     if data[mid] == target:
         return True
     elif data[mid] < target:
-        return binary_search(data, target, low, mid + 1)
+        return binary_search(data, target, mid + 1, high)
     else:
-        return binary_search(data, target, mid - 1, high)
+        return binary_search(data, target, low, mid - 1)
 
 print(binary_search([2, 8, 12, 18], 12))
 print(binary_search([2, 8, 12, 18], 11))
