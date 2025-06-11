@@ -7,3 +7,7 @@ WARNING!: I like to pretend that I know what I'm on about. Start [here.](/algori
 - Data Structures and Algorithms in Python, Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser
 
 > Assume all diagrams from this book.
+
+## Notes:
+
+- 3.3.3 reading looks incomplete.
