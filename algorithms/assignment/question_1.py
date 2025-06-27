@@ -38,7 +38,7 @@ def word_encoder(word):
     
     converted = "".join(result)
 
-    tail = converted [1:] # First could be a vowel so
+    tail = converted [1:] # First could be a vowel so...
     for vowel in drop_vowels:
         tail = tail.replace(vowel, "")
 
