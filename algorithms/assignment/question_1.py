@@ -13,14 +13,12 @@ def word_encoder(word):
     # --- Map ends here ---
 
     first = word[0]
+
     drop_vowels = ["a", "e", "i", "o", "u"]
     drop_consonants = ["y", "h", "w"]
 
     converted = ""
-    low_word = word.lower()
-
-    # Converts all values into numbers if they map
-    for character in low_word:
+    for character in word.lower():
         if character in drop_vowels:
             converted += character
         elif character in drop_consonants:
@@ -32,7 +30,7 @@ def word_encoder(word):
 
     result = []
 
-    previous = None
+    previous = ""
     for current in converted:
         if current != previous:
             result.append(current)
@@ -40,23 +38,16 @@ def word_encoder(word):
     
     converted = "".join(result)
 
-    # Duplicates decimated now need to just remove vowels
-
+    tail = converted [1:] # First could be a vowel so
     for vowel in drop_vowels:
-        converted = converted.replace(vowel, "")
+        tail = tail.replace(vowel, "")
 
-    converted = first + converted[1:]
-
-    # Covers case where word is too short and needs trailing 0s
-    # to make up 3 digits.
-    while len(converted) < 4:
-        converted += '0'
-
-    return converted
+    return (first + tail + "000")[:4]
 
 test_list = [
     ["abcdefghijklmnopqrstuvwxyz", "checks none of the values break anything"],
     ["ab", "check for a short sequence, should be a100"],
+    ["abc", "check for a slightly longer sequence"],
     ["Rubin", "Rubin should be R150"],
     ["Rupert", "Rupert should be R163"],
     ["Robert", "Robert should be R163"],
