@@ -1,7 +1,36 @@
 # Question 2: Dictionaries
 
 def map_airports(airport_list, city_list):
-    print(airport_list + city_list)
+    airports = parse_airports(airport_list)
+    cities = parse_cities(city_list)
+
+    countries = set()
+    for city in cities:
+        countries.add(city["country"])
+    print(countries)
+
+    return 
+def parse_airports(strings):
+    airports = []
+    for string in strings:
+        arr = string.split(",")
+        airports.append({
+            "IATA": arr[0],
+            "ICAO": arr[1],
+            "name": arr[2]
+        })
+    return airports
+
+def parse_cities(strings):
+    cities = []
+    for string in strings:
+        arr = string.split(",")
+        cities.append({
+            "country":  arr[0],
+            "city": arr[1]
+    })
+    return cities
+
 
 
 # --- Testing Section Baby! ---
