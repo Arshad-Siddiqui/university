@@ -38,25 +38,8 @@ def word_encoder(word):
     
     converted = "".join(result)
 
-    tail = converted [1:] # First could be a vowel so...
+    tail = converted [1:]
     for vowel in drop_vowels:
         tail = tail.replace(vowel, "")
 
     return (first + tail + "000")[:4]
-
-test_list = [
-    ["abcdefghijklmnopqrstuvwxyz", "checks none of the values break anything"],
-    ["ab", "check for a short sequence, should be a100"],
-    ["abc", "check for a slightly longer sequence"],
-    ["Rubin", "Rubin should be R150"],
-    ["Rupert", "Rupert should be R163"],
-    ["Robert", "Robert should be R163"],
-    ["Tymczak", "Tymczak should be T522"],
-    ["Pfister", "Pfister should be P263"]
-    ]
-
-for test in test_list:
-    print("-----")
-    print(word_encoder(test[0]))
-    print(test[1])
-    print("-----")
