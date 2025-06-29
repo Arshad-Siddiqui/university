@@ -45,14 +45,36 @@ def map_airports(airport_list, city_list):
                 if city in airport_name:
                     countries[country][city].add(iata)
                     break  # Found match
-
+        
+        # Deletes city keys that do not have any IATA codes
+        for country, cities in countries.items():
+            for city in cities:
+                if len(city) == 0:
+                    del cities[city]
     return countries
 
 # --- Testing Section ---
 # test_list = [
 #     {
+#         "description": "default case where it should just work",
 #         "airports": [
 # "LHR,EGLL,London Heathrow Airport",
+# "LGW,EGKK,London Gatwick Airport",
+# "MAN,EGCC, Manchester Airport",
+# "JFK,KJFK,John F. Kennedy International Airport",
+# "DXB,OMDB,Dubai International Airport"
+# ],
+#     "cities": [
+# "United Kingdom,London",
+# "United Kingdom,Manchester",
+# "France,Paris",
+# "United Arab Emirates,Dubai"
+# ]
+#     },
+#     {
+#         "description": "should raise error because IATA is wrong length",
+#         "airports": [
+# "LR,EGLL,London Heathrow Airport",
 # "LGW,EGKK,London Gatwick Airport",
 # "MAN,EGCC, Manchester Airport",
 # "JFK,KJFK,John F. Kennedy International Airport",
@@ -68,4 +90,5 @@ def map_airports(airport_list, city_list):
 #     ]
 
 # for test in test_list:
+#     print(test["description"])
 #     print(map_airports(test["airports"], test["cities"]))
