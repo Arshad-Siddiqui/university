@@ -84,16 +84,29 @@ class PathFinder():
   # Doesn't change the board. Returns bool
   def is_reachable(self, x, y):
     positions = Queue()
-    positions.put(self.get_rover)
-
     visited = set()
 
+    # starting position goes in queue and is obviously visited
+    positions.put(self.get_rover())
+    visited.add(self.get_rover()) 
     # Keep going while there are positions in the queue
     while not positions.empty():
       current_position = positions.get()
       if current_position == (x, y):
         return True
       
+      cx, cy = current_position
+      neighbours = [(cx, cy+1), (cx, cy-1), (cx-1, cy), (cx+1, cy)]
 
-
-    
+      for neighbour in neighbours:
+        if neighbour not in visited:
+          try:
+            self._validate_xy(neighbour[0], neighbour[1])
+          except ValueError:
+            continue
+          if self.get_altitude(neighbour[0], neighbour[1]) != -1:
+            gradient = abs(self.get_altitude(neighbour[0], neighbour[1]) - self.get_altitude(current_position[0], current_position[1]))
+            if gradient <= self._rover_max_gradient:
+              visited.add(neighbour)
+              positions.put(neighbour)
+    return False
