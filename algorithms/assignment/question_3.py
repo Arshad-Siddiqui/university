@@ -1,4 +1,6 @@
 # Question 3: Pathfinder
+import copy
+from queue import Queue
 
 class PathFinder():
   def _validate_xy(self, x, y):
@@ -39,11 +41,14 @@ class PathFinder():
 
   def set_terrain(self, altitudes):
     if len(altitudes) != len(self._map):
-      raise ValueError("Altitudes has incorrect width")
-    if len(altitudes[0]) != len(self._map[0]):
       raise ValueError("Altitudes has incorrect height")
     
-    self._map = altitudes
+    for i in range(len(self._map)):
+      if len(altitudes[i]) != len(self._map[i]):
+        raise ValueError(f"Altitudes has incorrect width in row {i}")
+    
+    # Avoids aliasing external list
+    self._map = copy.deepcopy(altitudes)
   
 
   def get_resources(self):
@@ -76,6 +81,19 @@ class PathFinder():
     return True
 
 
+  # Doesn't change the board. Returns bool
   def is_reachable(self, x, y):
-    # Doesn't change the board.
-    pass
+    positions = Queue()
+    positions.put(self.get_rover)
+
+    visited = set()
+
+    # Keep going while there are positions in the queue
+    while not positions.empty():
+      current_position = positions.get()
+      if current_position == (x, y):
+        return True
+      
+
+
+    
