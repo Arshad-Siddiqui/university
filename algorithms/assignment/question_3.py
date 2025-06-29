@@ -170,7 +170,7 @@ class PathFinder():
 
 
   # Doesn't change the board. Returns bool
-  def is_reachable(self, x, y):
+  def isreachable(self, x, y):
     """
     Figures out if a given position is accessible, using Breadth First Search, to the rover from its current position.
 
@@ -224,7 +224,7 @@ class PathFinder():
     closest_resource = None
     for resource in resources:
       # if resource is unreachable continue
-      if not self.is_reachable(resource[0], resource[1]):
+      if not self.isreachable(resource[0], resource[1]):
         continue
       # First reachable resource needs no comparison
       if closest_resource == None:
