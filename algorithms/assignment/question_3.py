@@ -216,7 +216,7 @@ class PathFinder():
     Utilises Breadth First Search to exhaustively check which reachable resource is closest to the rover.
 
     Returns:
-      tuple or None: A tuple containing the coordinates to the closest resource or if none are reachable then it returns None.
+      tuple|None: A tuple containing the coordinates to the closest resource or if none are reachable then it returns None.
     """
     resources = self.get_resources()
     position = self.get_rover()
