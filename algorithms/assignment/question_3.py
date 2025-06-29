@@ -57,7 +57,6 @@ class PathFinder():
       for y in range(len(self._map[0])):
         if self._map[x][y] == -2:
           resource_positions.add((x, y))
-
     return resource_positions
   
 
@@ -91,6 +90,7 @@ class PathFinder():
     visited.add(self.get_rover()) 
     # Keep going while there are positions in the queue
     while not positions.empty():
+      # Dequeues that element first in line
       current_position = positions.get()
       if current_position == (x, y):
         return True
@@ -110,3 +110,32 @@ class PathFinder():
               visited.add(neighbour)
               positions.put(neighbour)
     return False
+  
+
+  def get_closest_resource(self):
+    resources = self.get_resources()
+    position = self.get_rover()
+    # Gets replaced during iteration with closer resources
+    closest_resource = None
+    for resource in resources:
+      # if resource is unreachable continue
+      if not self.is_reachable(resource[0], resource[1]):
+        continue
+      # First reachable resource needs no comparison
+      if closest_resource == None:
+        closest_resource = resource
+      else:
+        # Distance of the current closest resource
+        closest_resource_dx = abs(position[0] - closest_resource[0])
+        closest_resource_dy = abs(position[1] - closest_resource[1])
+        closest_distance = closest_resource_dx + closest_resource_dy
+
+        # Distance of the challenging resource
+        resource_dx = abs(position[0] - resource[0])
+        resource_dy = abs(position[1] - resource[1])
+        resource_distance = resource_dx + resource_dy
+
+        # If distance is shorter we replace closest resource
+        if resource_distance < closest_distance:
+          closest_resource = resource
+    return closest_resource
