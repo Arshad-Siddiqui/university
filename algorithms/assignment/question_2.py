@@ -7,9 +7,11 @@ def map_airports(airport_list, city_list):
     countries = set()
     for city in cities:
         countries.add(city["country"])
-    print(countries)
+    countries = list(countries)
+    return {
+        country: None for country in countries
+    }
 
-    return 
 def parse_airports(strings):
     airports = []
     for string in strings:
@@ -53,4 +55,4 @@ test_list = [
     ]
 
 for test in test_list:
-    map_airports(test["airports"], test["cities"])
+    print(map_airports(test["airports"], test["cities"]))
