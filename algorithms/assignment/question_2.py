@@ -42,7 +42,7 @@ def map_airports(airport_list, city_list):
     
         for country, cities in countries.items():
             for city in cities:
-                if city in airport_name:
+                if city.lower() in airport_name.lower():
                     countries[country][city].add(iata)
                     break  # Found match
         
