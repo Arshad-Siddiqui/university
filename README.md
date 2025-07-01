@@ -1,13 +1,13 @@
 # Storing all my uni notes here
 
-WARNING!: I like to pretend that I know what I'm on about. Start [here.](/algorithms/week1/1.2.3.insertion.md)
+Start [here.](/algorithms/week1/1.2.3.insertion.md) :)
+
+WARNING!: I like to pretend that I know what I'm on about. Most of the notes here are a product of me handing my notes to ChatGPT to proof read and make look pretty. You can often tell what is mine by how trash it looks and if it is filled with emojis or not.
 
 ## Sources
 
 - Data Structures and Algorithms in Python, Michael T. Goodrich, Roberto Tamassia, Michael H. Goldwasser
 
-> Assume all diagrams from this book.
+- Lilian Blot's gitbook for python 3 tutorials. Also lectures from University of York. (Probably also made by Lilian)
 
-## Notes:
-
-- 3.3.3 reading looks incomplete.
+> Assume all diagrams from this book or from his lectures.
