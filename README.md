@@ -11,3 +11,7 @@ WARNING!: I like to pretend that I know what I'm on about. Most of the notes her
 - Lilian Blot's gitbook for python 3 tutorials. Also lectures from University of York. (Probably also made by Lilian)
 
 > Assume all diagrams from this book or from his lectures.
+
+# Important
+
+- Come back to 1.3.6 to do that quiz.
