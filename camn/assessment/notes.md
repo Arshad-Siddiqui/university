@@ -2,6 +2,16 @@ Make Assumptions!
 
 Must state assumptions, interpretations and decisions while justifying them.
 
+
+# Assumptions
+
+Notes
+I’m pretending to be a network designer and have been given several tasks by a fictional large healthcare institution called York General Hospital. This institution operates independently but still reports to the NHIS (National Health Information Service) digitally as well as the local health authority.
+Campus is organised into a Central Control Room as well as a Secure Data Center. On top of that there are several specialised annex facilities. They all need to be connected reliably and securely. The infrastructure must also be tailored for each facility.
+For some end devices ‘The hospital uses digital systems to monitor patient vitals, store and transmit medical records, manage diagnostic equipment, and support operational communications across departments. The facility also leverages advanced technologies, including IoT-connected medical sensors, cloud-integrated diagnostics, and mobile workstations used by clinical staff for bedside access to electronic health records (EHR).
+‘
+The Central Control Room and Data Centre are connected with a wired backbone while the annexes use wireless communication in order to keep costs down as well as make the equipment easier to use.
+
 # Background
 
 - I'm a netwok consultant working for York General Hospital.
@@ -188,3 +198,4 @@ Good referencing: All sources must be acknowledged with or without direct quotes
 
 PTP vs PTMP: https://www.geeksforgeeks.org/computer-networks/differences-between-point-to-point-and-multi-point-communication/
 
+In multipoint the channel gets shared among multiple devices. In terms of future proofing this means that there is fewer and fewer bandwidth for each annex as more get added over time.
